@@ -22,10 +22,11 @@ wk.add({
 	{ "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", mode = "n", desc = "Show info" },
 
 	{ "<leader>t", group = "tabline" },
-	{ "<leader>tn", "<cmd>tabnext<cr>", mode = "n", desc = "Next tab" },
-	{ "<leader>tp", "<cmd>tabprevious<cr>", mode = "n", desc = "Prev tab" },
 	{ "<leader>ta", "<cmd>tabnew<cr>", mode = "n", desc = "Add tab" },
 	{ "<leader>td", "<cmd>tabclose<cr>", mode = "n", desc = "Close tab" },
+	-- buf navigation
+	{ "<leader><Right>", "<cmd>bnext<cr>", mode = "n", desc = "Next buffer" },
+	{ "<leader><Left>", "<cmd>bprev<cr>", mode = "n", desc = "Prev buffer" },
 
 	{ "<leader>r", "<cmd>lua require('smart-splits').start_resize_mode()<cr>", mode = "n", desc = "Start resize mode" },
 })

@@ -31,6 +31,7 @@ cmp.setup{
 			end
 		end),
 		["<Esc>"] = cmp.mapping.abort(),
+		["<C-Space>"] = cmp.mapping.complete(),
 	},
 	snippet = {
 		expand = function(args)
@@ -45,9 +46,17 @@ cmp.setup{
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
-		{ name = "buffer" },
+		{
+			name = "buffer",
+			option = {
+				indexing_interval = 1000,
+			},
+		},
 		{ name = "path" },
 	},
+	performance = {
+		max_view_entries = 7,
+	}
 }
 
 cmp.setup.cmdline(":", {
