@@ -24,3 +24,8 @@ vim.o.showtabline = 2
 
 -- clipboard
 vim.o.clipboard = "unnamedplus"
+
+-- truecolor
+if vim.env.COLORTERM ~= nil then
+	vim.o.termguicolors = true
+end
