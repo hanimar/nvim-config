@@ -1,9 +1,13 @@
-require("settings.options")
+require("config.options")
 
-require("config.lazy")
+require("plugins.lazy")
 require("lazy").setup({
-	spec = { { import = "plugins" }, },
+	spec = {
+		{ import = "plugins/syntax" },
+		{ import = "plugins/ui" },
+		{ import = "plugins/utilities" },
+	},
 	checker = { enabled = true },
 })
 
-require("settings.postinit")
+require("config.postinit")

@@ -11,6 +11,6 @@ return {
 	},
 	event = { "InsertEnter", "CmdlineEnter" },
 	config = function()
-		require("config.nvim-cmp")
+		require("config.lsp.nvim-cmp")
 	end,
 }

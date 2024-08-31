@@ -5,6 +5,10 @@ return {
 	},
 	lazy = false,
 	config = function()
-		require("config.nvim-tree")
+		require("nvim-tree").setup{
+			filters = {
+				dotfiles = false,
+			},
+		}
 	end,
 }

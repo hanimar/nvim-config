@@ -15,6 +15,9 @@ vim.o.expandtab = false
 vim.o.shiftwidth = 4
 -- vim.o.smartindent = true
 
+-- line wrapping
+vim.o.wrap = false
+
 -- line number
 vim.o.number = true
 vim.o.relativenumber = true

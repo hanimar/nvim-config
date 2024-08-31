@@ -1,11 +1,15 @@
+require("mason").setup{}
 local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("cmp")
-local capabilities = require("config.nvim-cmp").capabilities
-
-require("telescope")
-local on_attach = require("config.telescope").on_attach
+local on_attach = function(client, buffnr)
+	local opts = { noremap = true, silent = true }
+	vim.api.nvim_buf_set_keymap(buffnr, "n", "gD", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+	vim.api.nvim_buf_set_keymap(buffnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+	vim.api.nvim_buf_set_keymap(buffnr, "n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+	vim.api.nvim_buf_set_keymap(buffnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+end
 
 mason_lspconfig.setup{
 	ensure_installed = {
