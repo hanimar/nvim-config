@@ -7,8 +7,18 @@ return {
 	config = function()
 		require("nvim-tree").setup{
 			filters = {
-				dotfiles = false,
+				dotfiles = true,
+			},
+			actions = {
+				open_file = {
+					window_picker = {
+						enable = true,
+					},
+				},
 			},
 		}
+		if vim.fn.argc(-1) == 0 then
+			vim.cmd("NvimTreeFocus")
+		end
 	end,
 }

@@ -5,8 +5,25 @@ return {
 		require("nvim-treesitter")
 		local treesitter_configs = require("nvim-treesitter.configs")
 
+		---@diagnostic disable: missing-fields
 		treesitter_configs.setup{
-			ensure_installed = { "c", "lua", "cpp", "python", "cmake", "comment", "css", "json", "latex", "dockerfile", "html" },
+			ensure_installed = {
+				"c",
+				"lua",
+				"cpp",
+				"python",
+				"cmake",
+				"comment",
+				"css",
+				"json",
+				"latex",
+				"dockerfile",
+				"html",
+				"markdown",
+				"markdown_inline",
+				"regex",
+				"hyprlang",
+			},
 			sync_install = false,
 			ignore_install = {},
 			auto_install = true,

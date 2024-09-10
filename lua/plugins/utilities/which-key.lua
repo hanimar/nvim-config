@@ -1,3 +1,5 @@
+require("config.commands.smart-splits")
+
 return {
 	"folke/which-key.nvim",
 	events = "VeryLazy",
@@ -24,6 +26,7 @@ return {
 			{ "<leader>l", group = "LSP/completion" },
 			{ "<leader>lm", "<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })<cr>", mode = "n", desc = "Show lsp message" },
 			{ "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", mode = "n", desc = "Show info" },
+			{ "<leader>lr", ":IncRename ", mode = "n", desc = "Rename" },
 
 			{ "<leader>t", group = "tabline" },
 			{ "<leader>ta", "<cmd>tabnew<cr>", mode = "n", desc = "Add tab" },
@@ -32,7 +35,7 @@ return {
 			{ "<leader><Right>", "<cmd>bnext<cr>", mode = "n", desc = "Next buffer" },
 			{ "<leader><Left>", "<cmd>bprev<cr>", mode = "n", desc = "Prev buffer" },
 
-			{ "<leader>r", "<cmd>lua require('smart-splits').start_resize_mode()<cr>", mode = "n", desc = "Start resize mode" },
+			{ "<leader>r", "<cmd>ResizeMode<cr>", mode = "n", desc = "Start resize mode" },
 		})
 	end,
 }

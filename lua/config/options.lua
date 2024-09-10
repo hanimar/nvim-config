@@ -32,3 +32,8 @@ vim.o.clipboard = "unnamedplus"
 if vim.env.COLORTERM ~= nil then
 	vim.o.termguicolors = true
 end
+
+-- filetypes
+vim.filetype.add{
+	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+}

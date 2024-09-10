@@ -3,8 +3,10 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"nvim-lua/lsp-status.nvim",
+		"tiagovla/scope.nvim",
 	},
 	config = function()
+		require("scope").setup{}
 		require("lualine").setup{
 			extensions = {
 				"fzf",

@@ -17,13 +17,25 @@ return {
 					fuzzy = true,
 					override_generic_sorter = true,
 					override_file_sorter = true,
-					cas_mode = "smart_case",
+					case_mode = "smart_case",
 				},
 			},
 			pickers = {},
-			defaults = require("telescope.themes").get_dropdown(),
+			defaults = {
+				layout_strategy = "horizontal",
+				layout_config = {
+					width = {padding = 0},
+					height = {padding = 0},
+					preview_width = 0.5,
+					prompt_position = "top",
+				},
+				sorting_strategy = "ascending",
+			},
+			-- defaults = require("telescope.themes").get_dropdown(),
 		}
 
 		telescope.load_extension("fzf")
+		telescope.load_extension("noice")
+		telescope.load_extension("scope")
 	end,
 }

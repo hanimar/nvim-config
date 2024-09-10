@@ -22,6 +22,7 @@ mason_lspconfig.setup{
 		"jsonls", --json
 		"texlab", --latex
 		"pyright", --python
+		"hyprls", -- hyprlang
 	}
 }
 

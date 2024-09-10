@@ -55,7 +55,7 @@ cmp.setup{
 		{ name = "path" },
 	},
 	performance = {
-		max_view_entries = 7,
+		-- max_view_entries = 7,
 	}
 }
 
