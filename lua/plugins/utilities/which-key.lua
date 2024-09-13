@@ -23,7 +23,7 @@ return {
 			{ "<leader>pa", "<cmd>Telescope autocommands<cr>", mode = { "n", "v" }, desc = "Autocommand palette" },
 			{ "<leader>pk", "<cmd>Telescope keymaps<cr>", mode = { "n", "v" }, desc = "Keymaps palette" },
 
-			{ "<leader>l", group = "LSP/completion" },
+			{ "<leader>l", group = "LSP and completion" },
 			{ "<leader>lm", "<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })<cr>", mode = "n", desc = "Show lsp message" },
 			{ "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", mode = "n", desc = "Show info" },
 			{ "<leader>lr", ":IncRename ", mode = "n", desc = "Rename" },

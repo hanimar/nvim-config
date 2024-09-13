@@ -9,5 +9,3 @@ require("lazy").setup({
 	},
 	checker = { enabled = true },
 })
-
-require("config.postinit")

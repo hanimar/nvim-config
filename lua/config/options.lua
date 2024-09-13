@@ -37,3 +37,6 @@ end
 vim.filetype.add{
 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 }
+
+-- python packages
+vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim/bin/python")
