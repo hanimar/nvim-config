@@ -1,3 +1,7 @@
+-- python packages
+vim.g.python3_host_prog=vim.fn.expand("/home/p1an1st/.virtualenvs/neovim/bin/python3")
+-- vim.g.python_host_prog=vim.fn.expand("/home/p1an1st/.virtualenvs/neovim/bin/python")
+
 -- leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
@@ -37,6 +41,3 @@ end
 vim.filetype.add{
 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 }
-
--- python packages
-vim.g.python3_host_prog=vim.fn.expand("~/.virtualenvs/neovim/bin/python")

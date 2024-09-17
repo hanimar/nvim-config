@@ -10,7 +10,8 @@ return {
 			{ ">", ">gv", mode = "v" },
 			{ "<", "<gv", mode = "v" },
 
-			{ "<leader>?", function() wk.show({ global = false }) end, mode = "n", desc = "Buffer local keymaps (which-key)" },
+			{ "<leader>?", function() wk.show({ global = true }) end, mode = "n", desc = "Global keymaps (which-key)" },
+			{ "<localleader>?", function() wk.show({ global = false }) end, mode = "n", desc = "Buffer local keymaps (which-key)" },
 
 			{ "<leader>f", group = "file" },
 			{ "<leader>ff", "<cmd>Telescope find_files<cr>", mode = "n", desc = "Find files" },
@@ -22,11 +23,12 @@ return {
 			{ "<leader>pc", "<cmd>Telescope commands<cr>", mode = { "n", "v" }, desc = "Command palette" },
 			{ "<leader>pa", "<cmd>Telescope autocommands<cr>", mode = { "n", "v" }, desc = "Autocommand palette" },
 			{ "<leader>pk", "<cmd>Telescope keymaps<cr>", mode = { "n", "v" }, desc = "Keymaps palette" },
+			{ "<leader>pb", "<cmd>Telescope buffers<cr>", mode = { "n", "v" }, desc = "Buffers palette" },
 
-			{ "<leader>l", group = "LSP and completion" },
-			{ "<leader>lm", "<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })<cr>", mode = "n", desc = "Show lsp message" },
-			{ "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", mode = "n", desc = "Show info" },
-			{ "<leader>lr", ":IncRename ", mode = "n", desc = "Rename" },
+			{ "<localleader>l", group = "LSP and completion" },
+			{ "<localleader>lm", "<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })<cr>", mode = "n", desc = "Show lsp message" },
+			{ "<localleader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", mode = "n", desc = "Show info" },
+			{ "<localleader>lr", ":IncRename ", mode = "n", desc = "Rename" },
 
 			{ "<leader>t", group = "tabline" },
 			{ "<leader>ta", "<cmd>tabnew<cr>", mode = "n", desc = "Add tab" },
