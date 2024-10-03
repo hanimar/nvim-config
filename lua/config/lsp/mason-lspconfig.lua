@@ -9,6 +9,9 @@ local on_attach = function(client, buffnr)
 	vim.api.nvim_buf_set_keymap(buffnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 	vim.api.nvim_buf_set_keymap(buffnr, "n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
 	vim.api.nvim_buf_set_keymap(buffnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+	if client.server_capabilities.inlayHintProvider then
+		vim.lsp.inlay_hint.enable(true)
+	end
 end
 
 mason_lspconfig.setup{
@@ -23,6 +26,8 @@ mason_lspconfig.setup{
 		"texlab", --latex
 		"pyright", --python
 		"hyprls", -- hyprlang
+		"rust_analyzer", -- rust
+		"ts_ls", -- javascript
 	}
 }
 

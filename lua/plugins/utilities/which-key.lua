@@ -7,6 +7,7 @@ return {
 		local wk = require("which-key")
 
 		wk.add({
+			{ "<esc>", "<c-\\><c-n>", mode = "t" },
 			{ ">", ">gv", mode = "v" },
 			{ "<", "<gv", mode = "v" },
 
@@ -30,9 +31,9 @@ return {
 			{ "<localleader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", mode = "n", desc = "Show info" },
 			{ "<localleader>lr", ":IncRename ", mode = "n", desc = "Rename" },
 
-			{ "<leader>t", group = "tabline" },
-			{ "<leader>ta", "<cmd>tabnew<cr>", mode = "n", desc = "Add tab" },
-			{ "<leader>td", "<cmd>tabclose<cr>", mode = "n", desc = "Close tab" },
+			{ "<leader>T", group = "Tabs" },
+			{ "<leader>Ta", "<cmd>tabnew<cr>", mode = "n", desc = "Add tab" },
+			{ "<leader>Td", "<cmd>tabclose<cr>", mode = "n", desc = "Close tab" },
 			-- buf navigation
 			{ "<leader><Right>", "<cmd>bnext<cr>", mode = "n", desc = "Next buffer" },
 			{ "<leader><Left>", "<cmd>bprev<cr>", mode = "n", desc = "Prev buffer" },

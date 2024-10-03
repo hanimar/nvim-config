@@ -36,7 +36,7 @@ return {
 					init_selection = "<C-n>",
 					node_incremental = "<C-n>",
 					scope_incremental = "<C-s>",
-					node_decremental = "<C-r>",
+					node_decremental = "<C-q>",
 				},
 			},
 		}

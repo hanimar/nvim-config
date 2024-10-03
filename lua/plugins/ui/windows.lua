@@ -1,5 +1,11 @@
 return {
 	"mrjones2014/smart-splits.nvim",
+	dependencies = {
+		"kwkarlwang/bufresize.nvim",
+		config = function ()
+			require("bufresize").setup()
+		end,
+	},
 	config = function()
 		require("smart-splits").setup{
 			ignored_buftypes = {
@@ -22,6 +28,7 @@ return {
 					end,
 					on_leave = function()
 						vim.notify("exit resize mode")
+						require("bufresize").register()
 					end,
 				},
 			},
