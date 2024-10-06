@@ -25,10 +25,12 @@ return {
 				defaults = {
 					layout_strategy = "horizontal",
 					layout_config = {
-						width = {padding = 0},
-						height = {padding = 0},
-						preview_width = 0.5,
-						prompt_position = "top",
+						horizontal = {
+							width = {padding = 0},
+							height = {padding = 0},
+							preview_width = 0.5,
+							prompt_position = "top",
+						}
 					},
 					sorting_strategy = "ascending",
 				},

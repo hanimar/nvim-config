@@ -1,4 +1,5 @@
 require("config.commands.smart-splits")
+local toggle_menu = require("config.commands.toggle").toggle_menu
 
 return {
 	"folke/which-key.nvim",
@@ -25,13 +26,15 @@ return {
 			{ "<leader>pa", "<cmd>Telescope autocommands<cr>", mode = { "n", "v" }, desc = "Autocommand palette" },
 			{ "<leader>pk", "<cmd>Telescope keymaps<cr>", mode = { "n", "v" }, desc = "Keymaps palette" },
 			{ "<leader>pb", "<cmd>Telescope buffers<cr>", mode = { "n", "v" }, desc = "Buffers palette" },
+			{ "<leader>pt", toggle_menu, mode = { "n", "v" }, desc = "Options palette" },
 
-			{ "<localleader>l", group = "LSP and completion" },
-			{ "<localleader>lm", "<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })<cr>", mode = "n", desc = "Show lsp message" },
-			{ "<localleader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", mode = "n", desc = "Show info" },
-			{ "<localleader>lr", ":IncRename ", mode = "n", desc = "Rename" },
+			{ "<localleader>c", group = "code" },
+			{ "<localleader>cm", "<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })<cr>", mode = "n", desc = "Show lsp message" },
+			{ "<localleader>ch", "<cmd>lua vim.lsp.buf.hover()<cr>", mode = "n", desc = "Show info" },
+			{ "<localleader>cr", ":IncRename ", mode = "n", desc = "Rename" },
+			{ "<localleader>ca", "<cmd>lua require('actions-preview').code_actions()<cr>", mode = "n", desc = "Code actions" },
 
-			{ "<leader>T", group = "Tabs" },
+			{ "<leader>T", group = "tabs" },
 			{ "<leader>Ta", "<cmd>tabnew<cr>", mode = "n", desc = "Add tab" },
 			{ "<leader>Td", "<cmd>tabclose<cr>", mode = "n", desc = "Close tab" },
 			-- buf navigation
