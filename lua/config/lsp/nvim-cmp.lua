@@ -75,6 +75,7 @@ cmp.setup{
 			},
 		},
 		{ name = "path" },
+		{ name = "latex_symbols" },
 	},
 	performance = {
 		-- max_view_entries = 7,
