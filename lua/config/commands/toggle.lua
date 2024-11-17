@@ -25,6 +25,7 @@ M.toggle_menu = function ()
 			"wrap",
 			"expandtab",
 			"tab width",
+			"inlay hints",
 		},
 		{
 			prompt = "Change option:",
@@ -39,6 +40,10 @@ M.toggle_menu = function ()
 				vim.notify("set expandtab to "..tostring(vim.o.expandtab))
 			elseif choice == "tab width" then
 				ch_tabwidth()
+			elseif choice == "inlay hints" then
+				vim.cmd("lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())")
+
+				vim.notify("inlay hints "..(vim.lsp.inlay_hint.is_enabled() and "enabled" or "disabled"))
 			end
 		end
 	)
