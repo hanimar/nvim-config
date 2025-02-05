@@ -4,10 +4,11 @@ return {
 		branch = "0.1.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"LukasPietzschmann/telescope-tabs",
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
 				build = "make"
-			}
+			},
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -40,6 +41,7 @@ return {
 			telescope.load_extension("fzf")
 			telescope.load_extension("noice")
 			telescope.load_extension("scope")
+			telescope.load_extension("telescope-tabs")
 		end,
 	},
 }

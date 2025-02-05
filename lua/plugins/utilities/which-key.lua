@@ -38,6 +38,7 @@ return {
 			{ "<leader>T",       group = "tabs" },
 			{ "<leader>Ta",      "<cmd>tabnew<cr>",                                               mode = "n",          desc = "Add tab" },
 			{ "<leader>Td",      "<cmd>tabclose<cr>",                                             mode = "n",          desc = "Close tab" },
+			{ "<leader>Tg",      "<cmd>Telescope telescope-tabs list_tabs<cr>",                   mode = "n",          desc = "Switch tabs" },
 			-- buf navigation
 			{ "<leader><Right>", "<cmd>bnext<cr>",                                                mode = "n",          desc = "Next buffer" },
 			{ "<leader><Left>",  "<cmd>bprev<cr>",                                                mode = "n",          desc = "Prev buffer" },
