@@ -1,4 +1,4 @@
-require("mason").setup{}
+require("mason").setup {}
 local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -14,26 +14,27 @@ local on_attach = function(client, buffnr)
 	end
 end
 
-mason_lspconfig.setup{
+mason_lspconfig.setup {
 	ensure_installed = {
-		"lua_ls", --lua
-		"clangd", --c/c++
+		"lua_ls",  --lua
+		"clangd",  --c/c++
 		"neocmake", --cmake
-		"cssls", --css
+		"cssls",   --css
 		"dockerls", --docker
-		"html", --html
-		"jsonls", --json
-		"texlab", --latex
+		"html",    --html
+		"jsonls",  --json
+		"texlab",  --latex
 		"pyright", --python
-		"hyprls", -- hyprlang
+		"ruff",    -- python (format)
+		"hyprls",  -- hyprlang
 		"rust_analyzer", -- rust
-		"ts_ls", -- javascript
+		"ts_ls",   -- javascript
 	}
 }
 
 mason_lspconfig.setup_handlers {
 	function(server_name) --default handler
-		lspconfig[server_name].setup{
+		lspconfig[server_name].setup {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			telemetry = { enable = false }
@@ -45,9 +46,23 @@ mason_lspconfig.setup_handlers {
 	--[name] = function()
 	--	setup
 	--end,
-
-	[ "lua_ls" ] = function()
-		lspconfig["lua_ls"].setup{
+	["pyright"] = function()
+		lspconfig["pyright"].setup {
+			settings = {
+				pyright = {
+					-- use ruff for import organization
+					disableOrganizeImports = true,
+				},
+				python = {
+					analysis = {
+						ignore = { "*" },
+					},
+				},
+			}
+		}
+	end,
+	["lua_ls"] = function()
+		lspconfig["lua_ls"].setup {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
@@ -66,8 +81,8 @@ mason_lspconfig.setup_handlers {
 			}
 		}
 	end,
-	[ "neocmake" ] = function()
-		lspconfig["neocmake"].setup{
+	["neocmake"] = function()
+		lspconfig["neocmake"].setup {
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {

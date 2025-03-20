@@ -9,6 +9,9 @@ vim.g.maplocalleader = "\\"
 -- center cursor
 vim.o.scrolloff = 20
 
+-- cursorline
+vim.o.cursorline = true
+
 -- case
 vim.o.ignorecase = true
 vim.o.smartcase = true
