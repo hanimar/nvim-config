@@ -46,6 +46,15 @@ mason_lspconfig.setup_handlers {
 	--[name] = function()
 	--	setup
 	--end,
+	["clangd"] = function ()
+		lspconfig["clangd"].setup{
+			capabilities = capabilities,
+			on_attach = on_attach,
+			init_options = {
+				fallbackFlags = { "--std=c++20" },
+			},
+		}
+	end,
 	["pyright"] = function()
 		lspconfig["pyright"].setup {
 			settings = {

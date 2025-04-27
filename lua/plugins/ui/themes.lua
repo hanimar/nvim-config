@@ -31,8 +31,8 @@ return {
 					}
 				end,
 			}
-			-- vim.cmd("colorscheme catppuccin-mocha")
-			vim.cmd("colorscheme catppuccin-latte")
+			vim.cmd("colorscheme catppuccin-mocha")
+			-- vim.cmd("colorscheme catppuccin-latte")
 		end,
 		enabled = true,
 	},
