@@ -1,6 +1,5 @@
 require("mason").setup {}
 local mason_lspconfig = require("mason-lspconfig")
-local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local on_attach = function(client, buffnr)
@@ -14,91 +13,78 @@ local on_attach = function(client, buffnr)
 	end
 end
 
-mason_lspconfig.setup {
-	ensure_installed = {
-		"lua_ls",  --lua
-		"clangd",  --c/c++
-		"neocmake", --cmake
-		"cssls",   --css
-		"dockerls", --docker
-		"html",    --html
-		"jsonls",  --json
-		"texlab",  --latex
-		"pyright", --python
-		"ruff",    -- python (format)
-		"hyprls",  -- hyprlang
-		"rust_analyzer", -- rust
-		"ts_ls",   -- javascript
-	}
+local lsp_list = {
+	"lua_ls",  --lua
+	"clangd",  --c/c++
+	"neocmake", --cmake
+	"cssls",   --css
+	"dockerls", --docker
+	"html",    --html
+	"jsonls",  --json
+	"texlab",  --latex
+	"pyright", --python
+	"ruff",    -- python (format)
+	"hyprls",  -- hyprlang
+	"rust_analyzer", -- rust
+	"ts_ls",   -- javascript
 }
 
-mason_lspconfig.setup_handlers {
-	function(server_name) --default handler
-		lspconfig[server_name].setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-			telemetry = { enable = false }
+mason_lspconfig.setup {
+	ensure_installed = lsp_list,
+}
+
+local default_setup = {
+	capabilities = capabilities,
+	on_attach = on_attach
+}
+
+local overrides = {
+	["lua_ls"] = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+		settings = {
+			Lua = {
+				runtime = {
+					version = "LuaJIT",
+				},
+				diagnostics = {
+					globals = { "vim" },
+				},
+				workspace = {
+					library = vim.api.nvim_get_runtime_file("", true),
+				},
+				telemetry = { enable = false }
+			}
 		}
-	end,
-
-	--dedicated handlers
-
-	--[name] = function()
-	--	setup
-	--end,
-	["clangd"] = function ()
-		lspconfig["clangd"].setup{
-			capabilities = capabilities,
-			on_attach = on_attach,
-			init_options = {
-				fallbackFlags = { "--std=c++20" },
+	},
+	["pyright"] = {
+		settings = {
+			pyright = {
+				-- use ruff for import organization
+				disableOrganizeImports = true,
+			},
+			python = {
+				analysis = {
+					ignore = { "*" },
+				},
 			},
 		}
-	end,
-	["pyright"] = function()
-		lspconfig["pyright"].setup {
-			settings = {
-				pyright = {
-					-- use ruff for import organization
-					disableOrganizeImports = true,
-				},
-				python = {
-					analysis = {
-						ignore = { "*" },
-					},
-				},
-			}
+	},
+	["neocmakelsp"] = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+		settings = {
+			cmd = { "neocmakelsp", "--stdio" },
+			filetypes = { "cmake", "CMakeLists.txt" },
+			single_file_support = true,
 		}
-	end,
-	["lua_ls"] = function()
-		lspconfig["lua_ls"].setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				Lua = {
-					runtime = {
-						version = "LuaJIT",
-					},
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						library = vim.api.nvim_get_runtime_file("", true),
-					},
-					telemetry = { enable = false }
-				}
-			}
-		}
-	end,
-	["neocmake"] = function()
-		lspconfig["neocmake"].setup {
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				cmd = { "neocmakelsp", "--stdio" },
-				filetypes = { "cmake", "CMakeLists.txt" },
-				single_file_support = true,
-			}
-		}
-	end,
+	},
 }
+
+for _, server in pairs(lsp_list) do
+	if overrides[server] then
+		vim.lsp.config[server] = overrides[server]
+	else
+		vim.lsp.config[server] = default_setup
+	end
+end
